@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Artifact</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="AJAX-enabled-Pagination-Plugin-jQuery/dist/bs-pagination.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="imgs/logo.png" alt="" srcset="">
+                <a href="https://redmist.gg" onclick="return (confirm('Follow this link?'))" target="_blank">original
+                    website</a>
+            </div>
+            <div class="searchContainer">
+                <input type="search" name="searchBox" id="searchBox" placeholder="search card...">
+                <button type="submit" id="search"><img src="imgs/search.png" alt="" srcset=""></button>
+            </div>
+        </div>
+        <div class="filterContainer">
+            <div class="cardListFilter">
+                <div class="cardType all">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">VIEW ALL</label>
+                </div>
+                <div class="cardType heros">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">HEROS</label>
+                </div>
+                <div class="cardType spells">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">SPELLS</label>
+                </div>
+                <div class="cardType creeps">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">CREEPS</label>
+                </div>
+                <div class="cardType improv">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">IMPROV.</label>
+                </div>
+                <div class="cardType items">
+                    <div class="cardTypeIcon"><img src="imgs/type.png" alt="" srcset=""></div>
+                    <label for="" class="cardTypeText">ITEMS</label>
+                </div>
+            </div>
+            <div class="rarity">
+                <div>RARITY</div>
+                <div class="rarityIcons">
+                    <div class="rarityType basic">
+                        <div class="rarityImg">
+                            <img src="imgs/basic.png" alt="" srcset="">
+                        </div>
+                        <div class="basicText rarityText">BASIC</div>
+                    </div>
+                    <div class="rarityType common">
+                        <div class="rarityImg">
+                            <img src="imgs/common.png" alt="" srcset="">
+                        </div>
+                        <div class="commonText rarityText">COMMON</div>
+                    </div>
+                    <div class="rarityType uncommon">
+                        <div class="rarityImg">
+                            <img src="imgs/uncommon.png" alt="" srcset="">
+                        </div>
+                        <div class="uncommonText rarityText">UNCOMMON</div>
+                    </div>
+                    <div class="rarityType rare">
+                        <div class="rarityImg">
+                            <img src="imgs/rare.png" alt="" srcset="">
+                        </div>
+                        <div class="rareText rarityText">RARE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="color">
+                <div class="colorTitle">COLOR</div>
+                <div class="colorIcons">
+                    <div class="red">
+                        <div class="colorImg">
+                            <img src="imgs/red.png" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="blue">
+                        <div class="colorImg">
+                            <img src="imgs/blue.png" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="black">
+                        <div class="colorImg">
+                            <img src="imgs/black.png" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="green">
+                        <div class="colorImg">
+                            <img src="imgs/green.png" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="artifactCards">
+            <div class="artifactCardsTitle">ARTIFACT CARDS
+                (<span class="cardQuantity"></span>)
+                <span class="menuIcon">
+                    <svg width="25" height="24">
+                        <line x1="5" y1="10" x2="20" y2="10" stroke="white" stroke-width="2" />
+                        <line x1="5" y1="16" x2="15" y2="16" stroke="white" stroke-width="2" />
+                        <line x1="5" y1="22" x2="10" y2="22" stroke="white" stroke-width="2" />
+                    </svg>
+                </span>
+                <select class="cardSort">
+                    <option class="sortDefault option" value="a-to-z">Default</option>
+                    <option class="sortNameAZ option" value="a-to-z">Name A-Z</option>
+                    <option class="sortNameZA option" value="z-to-a">Name Z-A</option>
+                    <option class="sortColor option" value="color">Color</option>
+                    <option class="sortAttack option" value="attack-asc">Attack</option>
+                    <option class="sortDefense option" value="">Defense</option>
+                    <option class="sortHealth option" value="">Health</option>
+                    <option class="sortMana option" value="">Mana Cost</option>
+                    <option class="sortPrice option" value="">Price</option>
+                </select>
+            </div>
+            <div class="artifactCardsList">
+
+            </div>
+            <ul id="pageReference" class="pagination"></ul>
+
+            <!-- <div class="pagination">
+                <span class="prePage">
+                    <</span> <span class="Page">1
+                </span>
+                <span class="Page">2</span>
+                <span class="Page">3</span>
+                <span class="Page">_</span>
+                <span class="Page">11</span>
+                <span class="Page">12</span>
+                <span class="Page">13</span>
+                <span class="nextPage">></span>
+            </div> -->
+        </div>
+
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="AJAX-enabled-Pagination-Plugin-jQuery/dist/pagination.min.js"></script>
+    <script src="js.js"></script>
+</body>
+
+</html>

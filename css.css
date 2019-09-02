@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    
+    border: 1px solid white;
+    width: 80%;
+    margin: 0 auto;
+
+    position: relative;
+}
+
+
+/*logo & search*/
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 22px;
+    margin: 25px 0;
+
+}
+
+#searchBox {
+    height: 21px;
+}
+
+#search {
+    width: 50px;
+    background-color: orangered;
+}
+
+#search img{
+    width: 15px;
+    height: 15px;
+    margin: 0 auto;
+}
+
+
+/*filter*/
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.cardListFilter, .rarity, .color {
+    flex-grow: 1;
+}
+
+.cardType, .rarityType{
+    flex-direction: column;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.cardTypeText, .rarityText {
+    justify-content: center;
+}
+
+.rarity, .color{
+    flex-direction: column;
+}
+
+
+.cardListFilter, .colorIcons, .rarityIcons {
+    justify-content: space-between;
+}
+
+.items, .rare {
+    padding-right: 60px;
+}
+
+.items {
+    border-right: 1px solid grey;
+}
+
+.rarity {
+    margin-left: 60px;
+}
+
+.cardTypeIcon img {
+    width: 72px;
+    height: 72px;
+}
+
+.rarityImg img {
+    width: 42px;
+    height: 42px;
+}
+
+.colorImg img {
+    width: 32px;
+    height: 35px;
+}
+
+.menuIcon {
+    margin-left: 65px;
+}
+
+.cardSort {
+    background-color: orangered;
+    color: white;
+    margin-left: 15px;
+    outline: none;
+}
+
+.cardSort option {
+    background-color: black;
+}
+
+/*cards & pages*/
+.artifactCards {
+    flex-direction: column;
+}
+
+.artifactCardsTitle {
+    margin: 30px 0 10px 0;
+    background-color: orangered;
+    position: absolute;
+    width: 102%;
+    height: 30px;
+    line-height: 30px;
+    margin-left: -2%;
+    padding-left: 2%;
+}
+
+.artifactCardsList {
+    margin-top: 70px;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+}
+
+.card {
+    flex-grow: 1;
+    margin: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.cardName {
+    justify-content: flex-start;
+    padding-left: 17px;
+    width: 213px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stats {
+    justify-content: space-around;
+    width: 230px;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.black {
+    background-color: grey;
+}
+
+.green {
+    background-color: green;
+}
+
+.gold {
+    background-color: gold;
+}
+
+.cardName, .stats {
+    height: 25px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card img {
+    width: 230px;
+    height: 310px;
+}
+
+/*pagination*/
+.pagination {
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.pagination span {
+    cursor: pointer;
+    margin: 0 10px;
+
+}
+
+#pageReference {
+    margin: 20px auto;
+
+}
+
+#pageReference li a{
+    background-color: #000000;
+    border: none;
+    color: white;
+}
+
+#pageReference li a:hover {
+    background-color: orangered;
+}
+
+#pageReference li span {
+    background-color: black;
+    border: 0;
+}
+
+#pageReference:first-child a,  #pageReference:last-child a{
+    background-color: #1b1b1b;
+
+}
+
+
+/*chart*/
+
+#chartContainer {
+}
+
