@@ -12,6 +12,7 @@
 
 <body>
     <div class="container">
+        <!-- logo + search bar -->
         <div class="header">
             <div class="logo">
                 <img src="imgs/logo.png" alt="" srcset="">
@@ -23,6 +24,7 @@
                 <button type="submit" id="search"><img src="imgs/search.png" alt="" srcset=""></button>
             </div>
         </div>
+        <!-- filters: hero/rarity/color -->
         <div class="filterContainer">
             <div class="cardListFilter">
                 <div class="cardType all">
@@ -105,7 +107,9 @@
                 </div>
             </div>
         </div>
+        <!-- cards showcase-->
         <div class="artifactCards">
+            <!-- cards' qty count, filter drop down  -->
             <div class="artifactCardsTitle">ARTIFACT CARDS
                 (<span class="cardQuantity"></span>)
                 <span class="menuIcon">
@@ -127,9 +131,11 @@
                     <option class="sortPrice option" value="">Price</option>
                 </select>
             </div>
+            <!--cards' showcase -->
             <div class="artifactCardsList">
 
             </div>
+            <!-- pagination -->
             <ul id="pageReference" class="pagination"></ul>
 
             <!-- <div class="pagination">
@@ -154,6 +160,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="AJAX-enabled-Pagination-Plugin-jQuery/dist/pagination.min.js"></script>
     <script src="js.js"></script>
+    <!-- <script src="cards.js"></script> -->
 </body>
 
 </html>

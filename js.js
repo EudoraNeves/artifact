@@ -5,14 +5,7 @@ $(document).ready(() => {
 
   $.getJSON(endPoint, ((data) => {
 
-    
-
-    // data.cards.forEach(element => {
-    //     $('.artifactCardsList').append('<div id="' + element.name + '" class="card"><div>' + element.name + '</div><img src="' + element.images.small + '" alt="" srcset=""></div>'); 
-    // });
-
     function getCards(obj, sort = 'a-to-z', page = 1) {
-      
       cardsSorted = sortCards(obj, sort)
       var firstPage = page == 1 ? 0 : (page - 1) * 24;
       var lastPage = page * 24;
@@ -25,10 +18,6 @@ $(document).ready(() => {
         let htmlCard = '<div class="card" id="' + cardName + '"><div class="cardName ' + (element.color ? element.color : 'gold') + '">' + cardName + '</div><a href="' + element.links.redmist + '" target="_blank"><img src = " ' + imgSrc + '"></a><div class = "stats ' + (element.color ? element.color : 'gold') + '"><span class="attack">ATK: ' + element.stats.attack + '</span><span class="armor">DEF: ' + element.stats.armor + '</span><span class="health">HP: ' + element.stats.health + '</span></div></div>'
         $(".artifactCardsList").append(htmlCard);
         $('.cardQuantity').text(obj.length);
-        // if(element.color == null){
-        //     $('.cardName .stats').css('background-color', 'gold');
-        // }
-
 
         function showPage(pageNo) {
           let cardQuantity = obj.length;
@@ -63,6 +52,8 @@ $(document).ready(() => {
 
 
     let cards = data.cards;
+    // let cardsColor = cards.color;
+
     let redCards = cards.filter(f => { return f.color == 'red' });
     let blueCards = cards.filter(f => { return f.color == 'blue' });
     let blackCards = cards.filter(f => { return f.color == 'black' });
@@ -80,65 +71,41 @@ $(document).ready(() => {
     let itemsCards = cards.filter(f => { return f.type == 'item' });
 
     getCards(cards);
-    let colorFilter = function(){
     $('.red').on('click', function () { getCards(redCards) });
     $('.blue').on('click', function () { getCards(blueCards) });
     $('.black').on('click', function () { getCards(blackCards) });
     $('.green').on('click', function () { getCards(greenCards) });
-  }
-  
-  let rarityFilter = function(){
+
     $('.basic').on('click', function () { getCards(basicCards) });
     $('.common').on('click', function () { getCards(commonCards) });
     $('.uncommon').on('click', function () { getCards(uncommonCards) });
     $('.rare').on('click', function () { getCards(rareCards) });
-  }
 
-  let typeFilter = function(){
     $('.all').on('click', function () { getCards(cards) });
     $('.heros').on('click', function () { getCards(herosCards) });
     $('.spells').on('click', function () { getCards(spellsCards) });
     $('.creeps').on('click', function () { getCards(creepsCards) });
     $('.improv').on('click', function () { getCards(improvCards) });
     $('.items').on('click', function () { getCards(itemsCards) });
-  }
 
-  // function merge (bigArray){
-  //   let array = [];
-  //   let middleArray = bigArray.reduce((a, b) => {
-  //     return a.concat(b);
-  //   })
+    $("#search").on("click", function () {
+      //let searchVal = $("#searchBox").val() 错误
+      cards.filter(element => {
+        let searchVal = $("#searchBox").val() //必须在箭头函数里
+        if (element.name.toLowerCase().includes(searchVal.toLowerCase())) {
+          console.log(element)
+          $(".artifactCardsList").empty().append('<div class="card" id="' + element.name + '"><div class="cardName ' + (element.color ? element.color : 'gold') + '">' + element.name + '</div><a href="' + element.links.redmist + '" target="_blank"><img src = " ' + element.images.full + '"></a><div class = "stats ' + (element.color ? element.color : 'gold') + '"><span class="attack">ATK: ' + element.stats.attack + '</span><span class="armor">DEF: ' + element.stats.armor + '</span><span class="health">HP: ' + element.stats.health + '</span></div></div>')
+          return element
+        }
+      })
+    })
 
-  //   for (arrItem in middleArray){
-  //     if (array.indexOf(arrItem) == -1){
-  //       array.push(arrItem);
-  //     }
-  //   }
-
-  //   return array;
-  // }
-
-  // merge([colorFilter, rarityFilter, typeFilter])
-
-
-
-    // getCards(cards);
-    // $('.red').on('click', function () { getCards(redCards) });
-    // $('.blue').on('click', function () { getCards(blueCards) });
-    // $('.black').on('click', function () { getCards(blackCards) });
-    // $('.green').on('click', function () { getCards(greenCards) });
-
-    // $('.basic').on('click', function () { getCards(basicCards) });
-    // $('.common').on('click', function () { getCards(commonCards) });
-    // $('.uncommon').on('click', function () { getCards(uncommonCards) });
-    // $('.rare').on('click', function () { getCards(rareCards) });
-
-    // $('.all').on('click', function () { getCards(cards) });
-    // $('.heros').on('click', function () { getCards(herosCards) });
-    // $('.spells').on('click', function () { getCards(spellsCards) });
-    // $('.creeps').on('click', function () { getCards(creepsCards) });
-    // $('.improv').on('click', function () { getCards(improvCards) });
-    // $('.items').on('click', function () { getCards(itemsCards) });
+    $("#searchBox").keydown(function (e) {
+      if (e.keyCode == 13) {
+        // 方法一：$("#search").click()
+        $("#search").trigger("click");
+      }
+    });
 
     $('.cardSort').change(function () { getCards(cards, $('.cardSort option:selected').val()) })
 
@@ -150,7 +117,7 @@ $(document).ready(() => {
       prev: "&lt;",
       next: "&gt;",
 
-      click:function (e) {
+      click: function (e) {
         getCards(cards, 'a-to-z', e.current)
       }
     });
